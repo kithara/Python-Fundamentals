@@ -33,7 +33,7 @@ def fetch_words(url):
 
 
 def print_items(items):
-    """Print a list of items
+    """Print a list of items as word|count
 
     Args:
         An iterable list of printable items
@@ -46,9 +46,9 @@ def print_items(items):
 
     for item in items:
         if item not in dic:
-            dic[item]=1
+            dic[item] = 1
         else:
-            dic[item] +=1
+            dic[item] += 1
 
     for dic_item in dic:
         print("word = {0} | count = {1}".format(dic_item, dic[dic_item]))
