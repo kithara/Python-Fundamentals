@@ -18,13 +18,18 @@ def fetch_words(url):
         A list of string containing the wrods from the document.
     
     """
-    with urlopen(url) as story:
-        story_words = []
-        for line in story:
-            line_words = line.decode('utf-8').split()
-            for word in line_words:
-                story_words.append(word)
-    return story_words
+    try:
+        with urlopen(url) as story:
+            story_words = []
+            for line in story:
+                line_words = line.decode('utf-8').split()
+                for word in line_words:
+                    story_words.append(word)
+        return story_words
+    except IOError:
+        print ("I experienced an exception. Check the url: '{url}'".format(url=url))
+        raise
+
 
 
 def print_items(items):
