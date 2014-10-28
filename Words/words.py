@@ -26,6 +26,22 @@ def fetch_words(url):
                 story_words.append(word)
     return story_words
 
+def fetch(url):
+    lines = []
+    with urlopen(url) as story:
+        for line in story:
+            line_words = line.decode('utf-8').split()
+            s = ' '.join(line_words)
+            print("|{0}|".format(s))
+            lines.append(s)
+
+    return lines
+
+
+def print_text(story):
+    for line in story:
+        print(line)
+
 
 def print_items(items):
     """Print a list of items
@@ -40,7 +56,6 @@ def print_items(items):
     for item in items:
         print(item)
 # 'http://sixty-north.com/c/t.txt' 
-
 
 def main(url):
     """Main program from command line
