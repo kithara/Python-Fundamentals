@@ -32,18 +32,40 @@ def fetch_words(url):
 
 
 def fetch(url):
+    """Fetch a list of lines from a URL.
+
+    Args:
+        url: The URL of a UTF-8 text document.
+
+    Returns:
+        A list of string containing the lines from the document.
+
+    """
     lines = []
-    with urlopen(url) as story:
-        for line in story:
-            line_words = line.decode('utf-8').split()
-            s = ' '.join(line_words)
-            print("|{0}|".format(s))
-            lines.append(s)
+    try:
+        with urlopen(url) as story:
+            for line in story:
+                line_words = line.decode('utf-8').split()
+                s = ' '.join(line_words)
+                print("|{0}|".format(s))
+                lines.append(s)
+    except IOError:
+        print ("I experienced an exception. Check the url: '{url}'".format(url=url))
+        raise
 
     return lines
 
 
 def print_text(story):
+    """Print a list of lines
+
+    Args:
+        An iterable list of printable strings
+
+    Returns:
+        None
+
+    """
     for line in story:
         print(line)
 
