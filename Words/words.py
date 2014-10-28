@@ -42,8 +42,16 @@ def print_items(items):
         None
 
     """
+    dic = dict()
+
     for item in items:
-        print(item)
+        if item not in dic:
+            dic[item]=1
+        else:
+            dic[item] +=1
+
+    for dic_item in dic:
+        print("word = {0} | count = {1}".format(dic_item, dic[dic_item]))
 # 'http://sixty-north.com/c/t.txt' 
 
 
