@@ -31,6 +31,22 @@ def fetch_words(url):
         raise
 
 
+def fetch(url):
+    lines = []
+    with urlopen(url) as story:
+        for line in story:
+            line_words = line.decode('utf-8').split()
+            s = ' '.join(line_words)
+            print("|{0}|".format(s))
+            lines.append(s)
+
+    return lines
+
+
+def print_text(story):
+    for line in story:
+        print(line)
+
 
 def print_items(items):
     """Print a list of items as word|count
@@ -53,7 +69,6 @@ def print_items(items):
     for dic_item in dic:
         print("word = {0} | count = {1}".format(dic_item, dic[dic_item]))
 # 'http://sixty-north.com/c/t.txt' 
-
 
 def main(url):
     """Main program from command line
